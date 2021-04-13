@@ -3,7 +3,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //스프링 부트의 자동 설정, 스프링 bean 읽기와 생성이 모두 자동으로 설정됨
-//이 위치부터 설정을 읽기떄문에 이 클래스는 프로젝트의 최상단에 위치할 필요가 있음
+//이 위치부터 설정을 읽기때문에 이 클래스는 프로젝트의 최상단에 위치할 필요가 있음
 @SpringBootApplication
 public class Application {
     //에러 수정 내역
