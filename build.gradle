@@ -1,0 +1,48 @@
+buildscript{
+    //build.gradle에서 사용하는 전역변수를 설정하겠다는 의미
+    //즉, spring-boot-gradle-plugin의 2.1.7.RELEASE를 의존성으로 받겠다는 의미
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories{
+        mavenCentral()
+        jcenter()
+    }
+    dependencies{
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+//플러그인의 의존성을 적용할 것인지 결정하는 코드
+//dependency가 안만들어져 plugins{}은 지움
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    //junit 단위테스트를 위한 의존성
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    //
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    //버전을 지정하지 않아야 위 버전을 따라감
+    //각 라이브러리들의 버전 관리가 한 곳에 집중되고, 버전 충돌 문제도 해결되어 편하게 개발할 수 있음
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+//compile, runtime, testCompile, testRuntime의 차이
+//junit이 있어야하는가?
+
+test {
+    useJUnitPlatform()
+}
