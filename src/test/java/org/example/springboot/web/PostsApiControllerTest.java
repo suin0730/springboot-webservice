@@ -43,7 +43,14 @@ public class PostsApiControllerTest {
         //given
         String title = "title";
         String content = "content";
-        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder().title(title).content(content).author("author").build();
+
+        PostsSaveRequestDto requestDto =
+                PostsSaveRequestDto.builder()
+                    .title(title)
+                    .content(content)
+                    .author("author")
+                    .build();
+
         String url = "http://localhost:"+port+"/api/v1/posts";
 
         //when
@@ -74,7 +81,8 @@ public class PostsApiControllerTest {
                         .title(expectedTitle)
                         .content(expectedContent)
                         .build();
-        String url = "http://localhost:"+port+"/api/v1/ports/"+updateId;
+
+        String url = "http://localhost:"+port+"/api/v1/posts/"+updateId;
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
         //when
