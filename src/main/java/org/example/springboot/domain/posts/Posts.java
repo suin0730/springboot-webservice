@@ -1,7 +1,9 @@
 package org.example.springboot.domain.posts;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.springboot.domain.BaseTimeEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +21,7 @@ import javax.persistence.Id;
 //posts 클래스는 실제 DB 테이블과 매칭될 클래스
 //JPA를 사용하면 DB 데이터에 작업시 실제 쿼리를 날리는게 아니라 entity 클래스의 수정을 통해 작업하게 됨
 //기본값으로 클래스의 카멜케이스 이름을 언더스코어 네이밍으로 테이블 이름 매칭
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     //해당 테이블의 PK 필드
     @Id
@@ -41,7 +43,7 @@ public class Posts {
     //서비스 초기 구축 단계에서 테이블 설계(엔티티 설계)가 빈번하게 바뀌므로 롬복 어노테이션 적극 사용은 코드 변경량 최소화에 도움이 됨
     //생성자와 비교했을 때 builder는 어떤 필드에 어떤 값이 채워져야하는지 명확하게 인지할 수 있다.
     @Builder
-    public Posts(String title, String content, String author){
+    public Posts (String title, String content, String author){
         this.title = title;
         this.content = content;
         this.author = author;
